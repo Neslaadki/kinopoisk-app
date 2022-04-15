@@ -1,10 +1,11 @@
-package com.andersen.dev.kinopoiskapp.service.impl;
+package com.andersen.dev.kinopoiskapp.rest.service.impl;
 
 import com.andersen.dev.kinopoiskapp.model.Role;
+import com.andersen.dev.kinopoiskapp.model.Status;
 import com.andersen.dev.kinopoiskapp.model.User;
 import com.andersen.dev.kinopoiskapp.repository.RoleRepository;
 import com.andersen.dev.kinopoiskapp.repository.UserRepository;
-import com.andersen.dev.kinopoiskapp.service.UserService;
+import com.andersen.dev.kinopoiskapp.rest.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -36,6 +37,7 @@ public class UserServiceImpl implements UserService {
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(userRoles);
+        user.setStatus(Status.ACTIVE);
 
         User registeredUser = userRepository.save(user);
 

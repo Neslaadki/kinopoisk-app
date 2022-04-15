@@ -2,22 +2,20 @@ package com.andersen.dev.kinopoiskapp.rest;
 
 import com.andersen.dev.kinopoiskapp.dto.AuthenticationRequestDto;
 import com.andersen.dev.kinopoiskapp.model.User;
-import com.andersen.dev.kinopoiskapp.security.jwt.JwtAuthException;
 import com.andersen.dev.kinopoiskapp.security.jwt.JwtTokenProvider;
-import com.andersen.dev.kinopoiskapp.service.UserService;
+import com.andersen.dev.kinopoiskapp.rest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.security.auth.message.AuthException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,8 +54,10 @@ public class AuthenticationRestControllerV1 {
             response.put("token", token);
 
             return ResponseEntity.ok(response);
-        } catch (JwtAuthException e) {
+        } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid username or password");
         }
     }
+
+    // сделать регистрацию
 }

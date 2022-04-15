@@ -10,9 +10,9 @@ import java.util.List;
 @Table(name = "users")
 @Setter
 @Getter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 public class User extends BaseEntity {
 
     @Column(name = "username")

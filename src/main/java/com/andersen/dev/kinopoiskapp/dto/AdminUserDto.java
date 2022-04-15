@@ -1,5 +1,6 @@
 package com.andersen.dev.kinopoiskapp.dto;
 
+import com.andersen.dev.kinopoiskapp.model.Status;
 import com.andersen.dev.kinopoiskapp.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
@@ -12,6 +13,7 @@ public class AdminUserDto {
     private String firstName;
     private String lastName;
     private String email;
+    private String status;
 
     public User toUser() {
         User user = new User();
@@ -20,6 +22,7 @@ public class AdminUserDto {
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setEmail(email);
+        user.setStatus(Status.valueOf(status));
         return user;
     }
 
@@ -30,6 +33,7 @@ public class AdminUserDto {
         adminUserDto.setFirstName(user.getFirstName());
         adminUserDto.setLastName(user.getLastName());
         adminUserDto.setEmail(user.getEmail());
+        adminUserDto.setStatus(user.getStatus().name());
         return adminUserDto;
     }
 }

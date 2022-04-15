@@ -1,6 +1,7 @@
 package com.andersen.dev.kinopoiskapp.security.jwt;
 
 import com.andersen.dev.kinopoiskapp.model.Role;
+import com.andersen.dev.kinopoiskapp.model.Status;
 import com.andersen.dev.kinopoiskapp.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,7 +24,8 @@ public final class JwtUserFactory {
                 user.getEmail(),
                 user.getPassword(),
                 mapToGrantedAuthorities(new ArrayList<>(user.getRoles())),
-                true // equalse(status)
+                user.getStatus().equals(Status.ACTIVE),
+                user.getUpdated()
         );
     }
 

@@ -5,6 +5,7 @@ import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,13 +25,15 @@ public class JwtTokenProvider {
 
     @Value("${jwt.token.secret}")
     private String secret;
+
     @Value("${jwt.token.expired}")
-    private Long validityInMilliseconds;
+    private long validityInMilliseconds;
 
-    @Autowired
-    private UserDetailsService userDetailsService;
 
-    public JwtTokenProvider() {
+    private final UserDetailsService userDetailsService;
+
+    public JwtTokenProvider(@Lazy UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
     }
 
     @Bean
@@ -91,12 +94,13 @@ public class JwtTokenProvider {
         }
     }
 
-    private List<String> getRoleNames(List<Role> userRoles){
+    private List<String> getRoleNames(List<Role> userRoles) {
         List<String> result = new ArrayList<>();
-        userRoles.forEach(role ->{
+
+        userRoles.forEach(role -> {
             result.add(role.getName());
         });
+
         return result;
     }
-
 }
