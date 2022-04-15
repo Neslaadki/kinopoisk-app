@@ -1,4 +1,4 @@
-package com.andersen.dev.kinopoiskapp.rest.service.impl;
+package com.andersen.dev.kinopoiskapp.service.impl;
 
 import com.andersen.dev.kinopoiskapp.dto.ContentDto;
 import com.andersen.dev.kinopoiskapp.dto.ContentTypesDto;
@@ -10,7 +10,7 @@ import com.andersen.dev.kinopoiskapp.mappers.GenresMapper;
 import com.andersen.dev.kinopoiskapp.model.ContentTypes;
 import com.andersen.dev.kinopoiskapp.model.Genres;
 import com.andersen.dev.kinopoiskapp.repository.ContentRepository;
-import com.andersen.dev.kinopoiskapp.rest.service.ContentService;
+import com.andersen.dev.kinopoiskapp.service.ContentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -3,7 +3,7 @@ package com.andersen.dev.kinopoiskapp.security;
 import com.andersen.dev.kinopoiskapp.model.User;
 import com.andersen.dev.kinopoiskapp.security.jwt.JwtUser;
 import com.andersen.dev.kinopoiskapp.security.jwt.JwtUserFactory;
-import com.andersen.dev.kinopoiskapp.rest.service.UserService;
+import com.andersen.dev.kinopoiskapp.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

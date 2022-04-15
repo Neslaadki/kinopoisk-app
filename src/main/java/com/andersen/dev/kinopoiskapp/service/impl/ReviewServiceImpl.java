@@ -1,4 +1,4 @@
-package com.andersen.dev.kinopoiskapp.rest.service.impl;
+package com.andersen.dev.kinopoiskapp.service.impl;
 
 import com.andersen.dev.kinopoiskapp.dto.ReviewDto;
 import com.andersen.dev.kinopoiskapp.exceptions.ContentNotFoundException;
@@ -6,9 +6,9 @@ import com.andersen.dev.kinopoiskapp.mappers.ReviewMapper;
 import com.andersen.dev.kinopoiskapp.model.*;
 import com.andersen.dev.kinopoiskapp.repository.ContentRepository;
 import com.andersen.dev.kinopoiskapp.repository.ReviewRepository;
-import com.andersen.dev.kinopoiskapp.rest.service.UserService;
+import com.andersen.dev.kinopoiskapp.service.UserService;
 import com.andersen.dev.kinopoiskapp.security.jwt.JwtAuthException;
-import com.andersen.dev.kinopoiskapp.rest.service.ReviewService;
+import com.andersen.dev.kinopoiskapp.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;

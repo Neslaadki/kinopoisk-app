@@ -2,7 +2,7 @@ package com.andersen.dev.kinopoiskapp.rest;
 
 import com.andersen.dev.kinopoiskapp.dto.AdminUserDto;
 import com.andersen.dev.kinopoiskapp.model.User;
-import com.andersen.dev.kinopoiskapp.rest.service.UserService;
+import com.andersen.dev.kinopoiskapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

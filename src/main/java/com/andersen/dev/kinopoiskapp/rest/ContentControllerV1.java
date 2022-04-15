@@ -1,7 +1,7 @@
 package com.andersen.dev.kinopoiskapp.rest;
 
 import com.andersen.dev.kinopoiskapp.dto.ContentDto;
-import com.andersen.dev.kinopoiskapp.rest.service.ContentService;
+import com.andersen.dev.kinopoiskapp.service.ContentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

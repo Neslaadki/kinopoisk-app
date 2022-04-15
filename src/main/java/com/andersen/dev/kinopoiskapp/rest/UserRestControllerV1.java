@@ -1,7 +1,7 @@
 package com.andersen.dev.kinopoiskapp.rest;
 
 import com.andersen.dev.kinopoiskapp.dto.ReviewDto;
-import com.andersen.dev.kinopoiskapp.rest.service.ReviewService;
+import com.andersen.dev.kinopoiskapp.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

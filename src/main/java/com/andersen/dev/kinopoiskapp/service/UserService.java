@@ -1,4 +1,4 @@
-package com.andersen.dev.kinopoiskapp.rest.service;
+package com.andersen.dev.kinopoiskapp.service;
 
 import com.andersen.dev.kinopoiskapp.model.User;
 
