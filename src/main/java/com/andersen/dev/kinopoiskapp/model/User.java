@@ -4,6 +4,7 @@ package com.andersen.dev.kinopoiskapp.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.List;
 
 @Entity
@@ -15,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class User extends BaseEntity {
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     private String username;
 
     @Column(name = "first_name")
@@ -25,6 +26,7 @@ public class User extends BaseEntity {
     private String lastName;
 
     @Column(name = "email")
+    @Email
     private String email;
 
     @Column(name = "password")

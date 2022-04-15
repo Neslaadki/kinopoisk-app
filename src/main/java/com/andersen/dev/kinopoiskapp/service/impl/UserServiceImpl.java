@@ -1,5 +1,6 @@
 package com.andersen.dev.kinopoiskapp.service.impl;
 
+import com.andersen.dev.kinopoiskapp.exceptions.UserWithUsernameIsAlreadyExists;
 import com.andersen.dev.kinopoiskapp.model.Role;
 import com.andersen.dev.kinopoiskapp.model.Status;
 import com.andersen.dev.kinopoiskapp.model.User;
@@ -39,11 +40,15 @@ public class UserServiceImpl implements UserService {
         user.setRoles(userRoles);
         user.setStatus(Status.ACTIVE);
 
-        User registeredUser = userRepository.save(user);
-
-        log.info("IN register - user: {} successfully registered", registeredUser);
-
-        return registeredUser;
+        if (userRepository.findByUsername(user.getUsername()) == null){
+            User registeredUser = userRepository.save(user);
+            log.info("IN register - user: {} successfully registered", registeredUser);
+            return registeredUser;
+        }
+        else{
+            log.info("IN register - username: {} unsuccessfully registered", user.getUsername());
+            throw new UserWithUsernameIsAlreadyExists("User with this username is exist");
+        }
     }
 
     @Override
