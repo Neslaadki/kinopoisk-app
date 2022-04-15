@@ -1,14 +1,18 @@
 package com.andersen.dev.kinopoiskapp.model;
 
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
-@Data
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class User extends BaseEntity {
 
     @Column(name = "username")
