@@ -68,7 +68,7 @@ public class AuthenticationRestControllerV1 {
     public ResponseEntity<?> register(@RequestBody RegistrationRequestDto requestDto){
         try {
             User user = userService.register(registrationRequestMapper.fromDto(requestDto));
-            return ResponseEntity.ok(new HashMap<>().put("username", user.getUsername()));
+            return ResponseEntity.ok(new HashMap<String, String>().put("username", user.getUsername()));
         }catch (Exception e) {
             throw new BadCredentialsException(e.getMessage());
         }

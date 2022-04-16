@@ -7,15 +7,16 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "roles")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "roles")
 @Accessors(chain = true)
+
 public class Role extends BaseEntity {
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)

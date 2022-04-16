@@ -7,12 +7,12 @@ import lombok.experimental.Accessors;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "reviews")
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "reviews")
 @Accessors(chain = true)
 public class Review extends BaseEntity {
 

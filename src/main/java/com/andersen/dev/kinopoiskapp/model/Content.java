@@ -10,12 +10,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "contents")
 @Setter
 @Getter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "contents")
 @Accessors(chain = true)
 public class Content extends BaseEntity {
 

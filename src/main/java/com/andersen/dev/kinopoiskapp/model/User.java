@@ -2,18 +2,20 @@ package com.andersen.dev.kinopoiskapp.model;
 
 
 import lombok.*;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
 @Setter
 @Getter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "users")
+@Accessors(chain = true)
 public class User extends BaseEntity {
 
     @Column(name = "username", unique = true)

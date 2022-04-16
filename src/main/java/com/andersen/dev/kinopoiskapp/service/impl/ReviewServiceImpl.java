@@ -38,7 +38,6 @@ public class ReviewServiceImpl implements ReviewService {
         String username = userDetails.getUsername();
         User user = userService.findByUsername(username);
         if (user!= null){
-
             Content content = contentRepository.getById(r.getContentId());
             if (content != null){
                 Review rv = new Review()
@@ -74,6 +73,9 @@ public class ReviewServiceImpl implements ReviewService {
         return reviewRepository.getReviewByUser(userId)
                 .stream().map(reviewMapper::toDTO).collect(Collectors.toList());
     }
+
+
+
 
 
 }
