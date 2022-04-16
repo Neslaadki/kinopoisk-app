@@ -36,24 +36,24 @@ public class InitialComp {
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
         long roleCount = roleRepository.count();
-        if (roleCount > 0) {
-            log.info("IN initialComp - init: the database already has {} roles. Unsuccessfully registered. ", roleCount);
-            throw new EntitiesIsAlreadyUploaded("can't save users");
-        }
-        List<Role> roles = Arrays.asList(
-                new Role().setName("ROLE_USER"),
-                new Role().setName("ROLE_ADMIN")
-        );
-        roleRepository.saveAll(roles);
-        log.info("IN initialComp - init: roles created, count : {}", roleRepository.count());
+        if (roleCount == 0) {
+            List<Role> roles = Arrays.asList(
+                    new Role().setName("ROLE_USER"),
+                    new Role().setName("ROLE_ADMIN")
+            );
+            roleRepository.saveAll(roles);
+            log.info("IN initialComp - init: roles created, count : {}", roleRepository.count());
 
-        User user = new User().setUsername("default").setEmail("default@gmail.com")
-                .setFirstName("Default").setLastName("Default")
-                .setPassword("$2a$12$l.Xt2/VCUJlVx.xOsMyP9ucvTDCDoX8hJsx5rOO5JAGkwiWMy/Jvy")
-                .setRoles(roles);
-        userRepository.save(user);
-        log.info("IN initialComp - init: default user with username : {}, email : {}, password : {} created", user.getUsername(), user.getEmail(), "default");
+            User user = new User().setUsername("default").setEmail("default@gmail.com")
+                    .setFirstName("Default").setLastName("Default")
+                    .setPassword("$2a$12$l.Xt2/VCUJlVx.xOsMyP9ucvTDCDoX8hJsx5rOO5JAGkwiWMy/Jvy")
+                    .setRoles(roles);
+            userRepository.save(user);
+            log.info("IN initialComp - init: default user with username : {}, email : {}, password : {} created", user.getUsername(), user.getEmail(), "default");
+        }
+
     }
 
+    //цепочка фильтров,  ContextHolder
 
 }
