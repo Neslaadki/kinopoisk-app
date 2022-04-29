@@ -7,7 +7,6 @@ import com.andersen.dev.kinopoiskapp.model.User;
 import com.andersen.dev.kinopoiskapp.security.jwt.JwtTokenProvider;
 import com.andersen.dev.kinopoiskapp.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -33,12 +32,6 @@ public class AuthenticationRestControllerV1 {
 
     private final RegistrationRequestMapper registrationRequestMapper;
 
-//    @Autowired
-//    public AuthenticationRestControllerV1(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserService userService) {
-//        this.authenticationManager = authenticationManager;
-//        this.jwtTokenProvider = jwtTokenProvider;
-//        this.userService = userService;
-//    }
 
     @PostMapping("login")
     public ResponseEntity<?> login(@RequestBody AuthenticationRequestDto requestDto) {
@@ -65,14 +58,13 @@ public class AuthenticationRestControllerV1 {
 
     @PostMapping("register")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> register(@RequestBody RegistrationRequestDto requestDto){
+    public ResponseEntity<?> register(@RequestBody RegistrationRequestDto requestDto) {
         try {
             User user = userService.register(registrationRequestMapper.fromDto(requestDto));
             return ResponseEntity.ok(new HashMap<String, String>().put("username", user.getUsername()));
-        }catch (Exception e) {
+        } catch (Exception e) {
             throw new BadCredentialsException(e.getMessage());
         }
     }
 
-    // сделать регистрацию
 }

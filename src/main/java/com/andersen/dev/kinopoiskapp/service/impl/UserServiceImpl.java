@@ -40,12 +40,11 @@ public class UserServiceImpl implements UserService {
         user.setRoles(userRoles);
         user.setStatus(Status.ACTIVE);
 
-        if (userRepository.findByUsername(user.getUsername()) == null){
+        if (userRepository.findByUsername(user.getUsername()) == null) {
             User registeredUser = userRepository.save(user);
             log.info("IN register - user: {} successfully registered", registeredUser);
             return registeredUser;
-        }
-        else{
+        } else {
             log.info("IN register - username: {} unsuccessfully registered", user.getUsername());
             throw new UserWithUsernameIsAlreadyExists("User with this username is exist");
         }

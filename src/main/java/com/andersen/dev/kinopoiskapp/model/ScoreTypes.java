@@ -17,7 +17,7 @@ public enum ScoreTypes {
     public static ScoreTypes getByName(String name) {
         try {
             return ScoreTypes.valueOf(name.trim().toUpperCase());
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }

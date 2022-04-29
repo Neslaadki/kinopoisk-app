@@ -10,7 +10,7 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface ReviewMapper {
 
-    ReviewMapper INSTANCE = Mappers.getMapper( ReviewMapper.class );
+    ReviewMapper INSTANCE = Mappers.getMapper(ReviewMapper.class);
 
     @Mappings({
             @Mapping(source = "user.id", target = "userId"),

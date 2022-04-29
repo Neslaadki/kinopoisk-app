@@ -15,7 +15,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class InitialComp {
             DataIntegrityViolationException.class,
             ConstraintViolationException.class,
             EntitiesIsAlreadyUploaded.class
-            })
+    })
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
         long roleCount = roleRepository.count();
@@ -53,7 +52,5 @@ public class InitialComp {
         }
 
     }
-
-    //цепочка фильтров,  ContextHolder
 
 }

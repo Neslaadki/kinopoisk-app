@@ -6,9 +6,9 @@ import com.andersen.dev.kinopoiskapp.mappers.ReviewMapper;
 import com.andersen.dev.kinopoiskapp.model.*;
 import com.andersen.dev.kinopoiskapp.repository.ContentRepository;
 import com.andersen.dev.kinopoiskapp.repository.ReviewRepository;
-import com.andersen.dev.kinopoiskapp.service.UserService;
 import com.andersen.dev.kinopoiskapp.security.jwt.JwtAuthException;
 import com.andersen.dev.kinopoiskapp.service.ReviewService;
+import com.andersen.dev.kinopoiskapp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -37,9 +37,9 @@ public class ReviewServiceImpl implements ReviewService {
                 .getPrincipal();
         String username = userDetails.getUsername();
         User user = userService.findByUsername(username);
-        if (user!= null){
+        if (user != null) {
             Content content = contentRepository.getById(r.getContentId());
-            if (content != null){
+            if (content != null) {
                 Review rv = new Review()
                         .setUser(user)
                         .setContent(content)
@@ -48,15 +48,13 @@ public class ReviewServiceImpl implements ReviewService {
                         .setScoreTypes(ScoreTypes.getByName(r.getScoreType()));
                 rv.setStatus(Status.ACTIVE);
                 Review review = reviewRepository.save(rv);
-                log.info("IN saveReview: user with id: {} successfully saved review on content with id: {}",user.getId(), content.getId());
+                log.info("IN saveReview: user with id: {} successfully saved review on content with id: {}", user.getId(), content.getId());
                 return review.getId();
-            }
-            else {
+            } else {
                 throw new ContentNotFoundException("Content with id not found");
             }
 
-        }
-        else{
+        } else {
             throw new JwtAuthException("Find user error!");
         }
 
@@ -73,9 +71,6 @@ public class ReviewServiceImpl implements ReviewService {
         return reviewRepository.getReviewByUser(userId)
                 .stream().map(reviewMapper::toDTO).collect(Collectors.toList());
     }
-
-
-
 
 
 }

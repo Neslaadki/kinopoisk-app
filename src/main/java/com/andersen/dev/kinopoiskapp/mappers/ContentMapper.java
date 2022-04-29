@@ -10,7 +10,7 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface ContentMapper {
 
-    ContentMapper INSTANCE = Mappers.getMapper( ContentMapper.class );
+    ContentMapper INSTANCE = Mappers.getMapper(ContentMapper.class);
 
     @Mappings({
             @Mapping(source = "contentType.name", target = "typeName"),
